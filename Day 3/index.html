@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body>
+    
+<style>
+
+    body {
+        background-color: lightgray;
+
+    }
+
+    h1 {
+        font-size: 70px;
+        text-align: center;
+        color: black;
+        font-family: cursive;
+        background: #effdff;
+        border-radius: 60px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12), 0 1.5px 6px rgba(0, 0, 0, 0.16);
+        padding: 40px 60px;
+        display: inline-block;
+        margin: 40px;
+    }
+
+    p {
+        font-size: 50px;
+        text-align: center;
+        color: #037070;
+        font-family: fantasy;
+        background: white;
+        border-radius: 10px;
+        padding: 16px 32px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        width: 40%;
+        margin-inline: auto;
+        text-shadow:
+       -2px -2px 0 #fff,
+        2px -2px 0 #fff,
+       -2px -2px 0 #fff,
+        2px -2px 0 #fff;
+    }
+
+    input {
+        font-size: 35px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        text-align: center;
+        margin: 50px;
+        width: 500px;
+    }
+    button {
+        font-size: 50px;
+        text-align: center;
+        padding: 10px 60px;
+        margin: 30px;
+        border-radius: 10px;
+        margin-top: 1px;
+        transition: transform 0.2s;
+    }
+
+    button:hover {
+        transform: scale(1.15);
+    }
+    
+    .inputs-row {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-bottom: 40px;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+</style>
+
+<div style="text-align: center;">
+<h1 id="title" onclick="changeTitle()">Sum Calculator</h1>
+</div>
+<div class="container">
+    <div class="inputs-row" id="inputs-row">
+<input type="number" class="number-input" placeholder="Input the first number">
+<input type="number" class="number-input" placeholder="Input the second number">
+</div>
+<div id="extra-inputs"></div>
+<button onclick="add()">Add</button>
+<button onclick="addInput()">Add number</button>
+</div>
+<p id="result" style="display: none;"></p>
+
+<script>
+    function add() {
+        const title = document.getElementById('title').textContent;
+        const inputs = document.querySelectorAll('.number-input');
+        let numbers = [];
+        inputs.forEach(input => {
+            const value = parseFloat(input.value);
+            if (!isNaN(value)) numbers.push(value);
+        });
+
+        let result = numbers[0] || 0;
+        if (title === 'Sum Calculator') {
+            for (let i = 1; i < numbers.length; i++) {
+                result += numbers[i];
+            }
+        } else {
+            for (let i = 1; i < numbers.length; i++) {
+                result -= numbers[i];
+            }
+        }
+
+    const resultEl = document.getElementById('result');
+    resultEl.textContent = `The result of this operation is ${result}.`;
+    resultEl.style.display = 'block';
+    }
+
+    function changeTitle() {
+        const title = document.getElementById('title');
+        if (title.textContent === 'Sum Calculator') {
+            title.textContent = 'Substraction Calculator';
+        } else {
+            title.textContent = 'Sum Calculator';
+        }
+    }
+
+    function addInput() {
+        const inputsRow = document.getElementById('inputs-row');
+        const extraInputs = document.getElementById('extra-inputs');
+        const totalInputs = document.querySelectorAll('.number-input').length;
+
+        const input = document.createElement('input');
+        input.type = 'number';
+        input.className = 'number-input';
+        input.placeholder = 'Input another number';
+
+        if (totalInputs < 2) {
+            inputsRow.appendChild(input);
+        } else {
+            extraInputs.appendChild(input);
+        }
+    }
+
+    const clickSound = new Audio('click.mp3')
+    document.body.addEventListener('click', function(event) {
+        if (!(event.target.tagName !== 'INPUT' && event.target.type !== 'text')) {
+        clickSound.currentTime = 0;
+        clickSound.play();
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html> <!-- Comando inicial de um código HTML, serve para avisar ao sistema que se trata de um código na versão HTML5 -->
+<html lang="en"> <!-- Define o idioma do documento como inglês -->
+
+<head> <!-- Inicia o cabeçalho -->
+
+    <meta charset="UTF-8"> <!-- Define a codificação de caracteres como UTF-8, que suporta a maioria dos caracteres e símbolos -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Comandos usados para controlar como a página é exibida em dispositivos móveis -->
+
+    <title>Calculator</title> <!-- Define o título da página que aparece na aba do navegador -->
+
+</head> <!-- Encerra as definições feitas para o código do cabeçalho -->
+
+<body> <!-- Inicia o corpo do documento, onde o conteúdo visível da página é colocado -->
+    
+<style> /* Estilos CSS para a página */
+    body { /* Define o estilo do corpo da página */
+        background-color: lightgray; /* Define a cor de fundo da página como cinza claro */
+    }
+
+    h1 { /* Define o estilo do título */
+        font-size: 70px; /* Define o tamanho da fonte do título */
+        text-align: center; /* Centraliza o texto do título */
+        color: black; /* Define a cor do texto do título como preto */
+        font-family: cursive; /* Define a fonte do título como cursiva */
+        background: #effdff; /* Define o fundo do título como um tom claro de azul */
+        border-radius: 60px; /* Arredonda os cantos do fundo do título */
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12), 0 1.5px 6px rgba(0, 0, 0, 0.16); /* Adiciona uma sombra ao fundo do título */
+        padding: 40px 60px; /* Adiciona espaçamento interno ao título */
+        display: inline-block; /* Faz com que o título se comporte como um bloco em linha, permitindo que ele tenha largura e altura */
+        margin: 40px; /* Adiciona uma margem ao redor do título */
+    } /* Encerra as alterações no título */
+
+    p { /* Define o estilo dos parágrafos */
+        font-size: 50px; /* Define o tamanho da fonte dos parágrafos */
+        text-align: center; /* Centraliza o texto dos parágrafos */
+        color: #037070; /* Define a cor do texto dos parágrafos como um tom de verde-azulado */
+        font-family: fantasy; /* Define a fonte dos parágrafos como fantasia */
+        background: white; /* Define o fundo dos parágrafos como branco */
+        border-radius: 10px; /* Arredonda os cantos do fundo dos parágrafos */
+        padding: 16px 32px; /* Adiciona espaçamento interno aos parágrafos */
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08); /* Adiciona uma sombra ao fundo dos parágrafos */
+        width: 40%; /* Define a largura dos parágrafos como 40% do contêiner pai */
+        margin-inline: auto; /* Centraliza os parágrafos horizontalmente */
+        text-shadow: /* Adiciona um efeito de sombra ao texto dos parágrafos */
+       -2px -2px 0 #fff, /* Sombra superior esquerda */
+        2px -2px 0 #fff, /* Sombra superior direita */
+       -2px -2px 0 #fff, /* Sombra inferior esquerda */
+        2px -2px 0 #fff; /* Sombra inferior direita */
+    } /* Encerra as alterações nos parágrafos */
+
+    input { /* Define o estilo dos campos de entrada */
+        font-size: 35px; /* Define o tamanho da fonte dos campos de entrada */
+        font-family: Verdana, Geneva, Tahoma, sans-serif; /* Define a fonte dos campos de entrada */
+        text-align: center; /* Centraliza o texto dentro dos campos de entrada */
+        margin: 50px; /* Adiciona uma margem ao redor dos campos de entrada */
+        width: 500px; /* Define a largura dos campos de entrada */
+    } /* Encerra as alterações nos campos de entrada */
+
+    button { /* Define o estilo dos botões */
+        font-size: 50px; /* Define o tamanho da fonte dos botões */
+        text-align: center; /* Centraliza o texto dentro dos botões */
+        padding: 10px 60px; /* Adiciona espaçamento interno aos botões */
+        margin: 30px; /* Adiciona uma margem ao redor dos botões */
+        border-radius: 10px; /* Arredonda os cantos dos botões */
+        margin-top: 1px; /* Adiciona uma margem superior aos botões */
+        transition: transform 0.2s; /* Adiciona uma transição suave ao efeito de transformação dos botões */
+    } /* Encerra as alterações nos botões */
+
+    button:hover { /* Define o efeito de hover para os botões */
+        transform: scale(1.15); /* Aumenta o tamanho dos botões quando o mouse passa sobre eles */
+    } /* Encerra as alterações do efeito de hover nos botões */
+    
+    .inputs-row { /* Define o estilo da linha de entradas */
+        display: flex; /* Define o layout flexível para a linha de entradas */
+        gap: 20px; /* Adiciona um espaço entre os campos de entrada */
+        justify-content: center; /* Centraliza os campos de entrada horizontalmente */
+        margin-bottom: 40px; /* Adiciona uma margem inferior à linha de entradas */
+    } /* Encerra as alterações da linha de entradas */
+
+    .container { /* Define o estilo do contêiner principal */
+        display: flex; /* Define o layout flexível para o contêiner principal */
+        flex-direction: column; /* Organiza os elementos do contêiner principal em uma coluna */
+        align-items: center; /* Centraliza os elementos do contêiner principal horizontalmente */
+    } /* Encerra as alterações do contêiner principal */
+</style> <!-- Encerra a estilização em CSS da página -->
+
+    <div style="text-align: center;"> <!-- Cria um contêiner centralizado para o título -->
+        <h1 id="title" onclick="changeTitle()">Sum Calculator</h1> <!-- Define o título da página e adiciona um evento de clique que chama a função changeTitle() -->
+    </div> <!-- Encerra o contêiner centralizado para o título -->
+
+    <div class="container"> <!-- Inicia o contêiner principal que organiza os elementos da página -->
+
+        <div class="inputs-row" id="inputs-row"> <!-- Inicia a linha de entradas que contém os campos de entrada para os números -->
+            <input type="text" class="number-input" inputmode="numeric" placeholder="Input the first number"> <!-- Cria o primeiro campo de entrada para o número -->
+            <input type="text" class="number-input" inputmode="numeric" placeholder="Input the second number"> <!-- Cria o segundo campo de entrada para o número -->
+        </div> <!-- Encerra a linha de entradas -->
+
+        <div id="extra-inputs"></div> <!-- Cria um contêiner para entradas extras de números, que serão adicionadas dinamicamente -->
+
+        <button id="operation-btn" onclick="add()">Add</button> <!-- Cria um botão que chama a função add() quando clicado, iniciando o cálculo da soma ou subtração -->
+        <button onclick="addInput()">Add number</button> <!-- Cria um botão que chama a função addInput() quando clicado, permitindo adicionar mais campos de entrada para números -->
+
+    </div> <!-- Encerra o contêiner principal que organiza os elementos da página -->
+
+    <p id="result" style="display: none;"></p> <!-- Cria um parágrafo para exibir o resultado do cálculo, inicialmente oculto -->
+
+<script> // Inicia o script JavaScript que contém a lógica da calculadora
+    function add() { // Inicia a função add, que é chamada quando o botão de operação é clicado
+
+        const title = document.getElementById('title').textContent; // Obtém o texto do título da página para determinar a operação a ser realizada
+        const inputs = document.querySelectorAll('.number-input'); // Seleciona todos os campos de entrada com a classe 'number-input' para coletar os números inseridos
+
+        let numbers = []; // Cria um array vazio para armazenar os números inseridos
+
+        inputs.forEach(input => { // Inicia um loop para cada campo de entrada
+            const value = parseFloat(input.value); // Converte o valor do campo de entrada para um número de ponto flutuante
+            if (!isNaN(value)) numbers.push(value); // Se o valor for um número válido, adiciona-o ao array de números
+        }); 
+
+        let result = numbers[0] || 0;  // Inicializa a variável result com o primeiro número do array ou 0 se o array estiver vazio
+
+        if (title === 'Sum Calculator') { // Verifica se o título é 'Sum Calculator' para determinar a operação a ser realizada
+            for (let i = 1; i < numbers.length; i++) { // Inicia um loop a partir do segundo número do array
+                result += numbers[i]; // Adiciona o número atual ao resultado
+            } 
+            } else { // Se o título não for 'Sum Calculator', assume que é 'Substraction Calculator'
+            for (let i = 1; i < numbers.length; i++) { // Inicia um loop a partir do segundo número do array
+                result -= numbers[i]; // Subtrai o número atual do resultado
+            } // Encerra o comando "for" que carrega um loop
+        } // Encerra o comando "if" que verifica o título da página
+
+        const resultEl = document.getElementById('result'); // Seleciona o elemento onde o resultado será exibido
+
+        resultEl.textContent = `The result of this operation is ${result}.`; // Define o texto do elemento de resultado com o resultado da operação realizada
+        resultEl.style.display = 'block'; // Torna o elemento de resultado visível
+    }
+
+    function changeTitle() { // Inicia a função changeTitle, que é chamada quando o título é clicado
+        const title = document.getElementById('title'); // Seleciona o elemento do título da página
+        const operationBtn = document.getElementById('operation-btn'); // Seleciona o botão de operação
+ 
+       if (title.textContent === 'Sum Calculator') { // Verifica se o título atual é 'Sum Calculator'
+            title.textContent = 'Substraction Calculator'; // Se for, altera o título para 'Substraction Calculator'
+            operationBtn.textContent = 'Subtract'; // Altera o texto do botão de operação para 'Subtract'
+            } else { // Se o título não for 'Sum Calculator', assume que é 'Substraction Calculator'
+            title.textContent = 'Sum Calculator'; // Altera o título de volta para 'Sum Calculator'
+            operationBtn.textContent = 'Add'; // Altera o texto do botão de operação de volta para 'Add'
+        } // Encerra o comando "if" que verifica o título da página
+    } // Encerra a função changeTitle
+
+    function addInput() { // Inicia a função addInput, que é chamada quando o botão "Add number" é clicado
+        const inputsRow = document.getElementById('inputs-row'); // Seleciona o elemento que contém os campos de entrada
+        const extraInputs = document.getElementById('extra-inputs'); // Seleciona o elemento que contém os campos de entrada extras
+        const totalInputs = document.querySelectorAll('.number-input').length; // Conta o número total de campos de entrada com a classe 'number-input'
+ 
+        const input = document.createElement('input');  // Cria um novo campo de entrada
+            input.type = 'text'; // Define o tipo do campo de entrada como texto
+            input.className = 'number-input'; // Adiciona a classe 'number-input' ao campo de entrada
+            input.inputMode = 'numeric'; // Define o modo de entrada como numérico
+            input.placeholder = 'Input another number'; // Define o texto de espaço reservado para o campo de entrada
+
+        if (totalInputs < 2) { // Verifica se o número total de campos de entrada é menor que 2
+            inputsRow.appendChild(input); // Se for, adiciona o novo campo de entrada à linha de entradas
+            } else { // Se já houver 2 ou mais campos de entrada
+            extraInputs.appendChild(input); // Adiciona o novo campo de entrada ao contêiner de entradas extras
+        } // Encerra o comando "if" que verifica o número total de campos de entrada
+    } // Encerra a função addInput
+
+    const clickSound = new Audio('click.mp3') ; // Cria um novo objeto de áudio para o som de clique, carregando o arquivo 'click.mp3'
+ 
+    document.body.addEventListener('click', function(event) { // Adiciona um evento de clique ao corpo do documento
+        if (!(event.target.tagName === 'INPUT' && event.target.type === 'text')) { // Verifica se o elemento clicado não é um campo de entrada de texto
+ 
+            clickSound.currentTime = 0; // Reseta o tempo do som de clique para que ele possa ser reproduzido novamente
+            clickSound.play(); // Reproduz o som de clique quando o usuário clica em qualquer lugar da página que não seja um campo de entrada de texto
+
+        } // Encerra o comando "if" que verifica se o elemento clicado não é um campo de entrada de texto
+    }); // Encerra o evento de clique no corpo do documento
+
+    function blockNonNumericInput(input) { // Inicia a função blockNonNumericInput, que bloqueia a entrada de caracteres não numéricos nos campos de entrada
+
+        input.addEventListener('keypress', function(e) { // Adiciona um evento de tecla pressionada ao campo de entrada
+
+            const char = e.key; // Obtém o caractere digitado pelo usuário
+            const value = input.value; 
+
+            if ( // Verifica se o caractere digitado é um número, vírgula, ponto ou hífen no início do campo de entrada
+                char === '-' && // Verifica se o caractere é um hífen
+                input.selectionStart === 0 && // Verifica se o cursor está no início do campo de entrada
+                !value.includes('-') )
+            
+            {
+                return; // Se todas as condições forem verdadeiras, permite a entrada do hífen
+            }
+
+            if (/[0-9.,]/.test(char)) return; // Se o caractere digitado for um número, vírgula ou ponto, permite a entrada
+            e.preventDefault(); // Caso contrário, impede a entrada do caractere não numérico
+
+            }); // Encerra o evento de tecla pressionada no campo de entrada
+    }
+
+    function addInputSoundAndBlock() { // Inicia a função addInputSoundAndBlock, que adiciona som de clique e bloqueia a entrada de caracteres não numéricos nos campos de entrada
+        const numberInputs = document.querySelectorAll('.number-input'); // Seleciona todos os campos de entrada com a classe 'number-input'
+        numberInputs.forEach(input => { // Inicia um loop para cada campo de entrada com a classe 'number-input'
+            input.addEventListener('input', function() { // Adiciona um evento de entrada a cada campo de entrada
+
+                clickSound.currentTime = 0; // Reseta o tempo do som de clique para que ele possa ser reproduzido novamente
+                clickSound.play(); // Reproduz o som de clique quando o usuário digita no campo de entrada
+                
+            });
+
+            blockNonNumericInput(input); // Chama a função para bloquear a entrada de caracteres não numéricos no campo de entrada
+
+        }); // Encerra o loop que adiciona o evento de entrada e bloqueia a entrada de caracteres não numéricos para cada campo de entrada
+    } // Encerra a função addInputSoundAndBlock
+
+        const input = document.createElement('input'); // Cria um novo campo de entrada
+        input.type = 'text'; // Define o tipo do campo de entrada como texto
+        input.className = 'number-input'; // Adiciona a classe 'number-input' ao campo de entrada
+        input.inputMode = 'numeric'; // Define o modo de entrada como numérico
+        input.placeholder = 'Input another number'; // Define o texto de espaço reservado para o campo de entrada
+
+        document.getElementById('extra-inputs').appendChild(input); // Adiciona o novo campo de entrada ao contêiner 'extra-inputs'
+
+    addInputSoundAndBlock(); // Chama a função para adicionar o som de clique e bloquear a entrada de caracteres não numéricos nos campos de entrada
+
+        input.addEventListener('input', function() { // Adiciona um evento de entrada ao campo de entrada
+            clickSound.currentTime = 0; // Reseta o tempo do som de clique para que ele possa ser reproduzido novamente
+            clickSound.play(); // Reproduz o som de clique quando o usuário digita no campo de entrada
+        } // Encerra a função
+        ); // Encerra o evento de entrada
+            blockNonNumericInput(input); // Bloqueia a entrada de caracteres não numéricos no campo de entrada
+</script> <!-- Encerra o script JavaScript que contém a lógica da calculadora -->
+</body> <!-- Encerra o corpo do documento -->
+</html> <!-- Encerra o documento HTML -->

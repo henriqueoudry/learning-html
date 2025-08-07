@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>RedBlue</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="startScreen" class="start-screen" aria-hidden="false">
+        <div class="start-twocol">
+            <aside class="avatar-editor" aria-hidden="false">
+                <div id="avatarPlaceholder" class="avatar-placeholder">
+                    <div class="avatar-head">Avatar</div>
+                    <div class="avatar-controls">
+                        <button class="small">Cabelo</button>
+                        <button class="small">Rosto</button>
+                        <button class="small">Roupas</button>
+                    </div>
+                </div>
+            </aside>
+
+            <div class="start-card-wrap">
+                <div class="start-card">
+                    <img src="OR-logo.png" alt="Logo do jogo" class="start-logo">
+                    <button id="startBtn" class="start-btn">JOGAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.165.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.165.0/examples/jsm/"
+        }
+      }
+    </script>
+    <script type="module" src="script.js"></script>
+</body>
+</html>

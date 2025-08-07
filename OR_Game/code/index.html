@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OR</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="start-screen">
+<img src="OR-Logo.ico" alt="Logo do Jogo" class="main-logo">
+<div id="nickname-block">
+<input type="text" id="nickname-input" placeholder="Digite seu nickname">
+<button id="confirm-nickname-button">Confirmar</button>
+</div>
+
+ <button id="play-button" class="hidden">Jogar</button>
+</div>
+
+<div id="game-screen" class="hidden">
+<h1 class="title">O que você prefere?</h1>
+<button id="pause-button">
+    <span>&#10074;&#10074;</span>
+</button>
+<div class="container">
+<div class="blue"><p></p></div>
+<div class="red"><p></p></div>
+</div>
+</div>
+
+<div id="pause-screen" class="hidden">
+<div class="pause-content">
+<h2>Jogo Pausado</h2>
+<button id="resume-button">Continuar</button>
+<button id="restart-button">Reiniciar Jogo</button>
+<button id="quit-button">Sair</button>
+</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+
+</html>

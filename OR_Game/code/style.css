@@ -1,0 +1,254 @@
+html, body {
+height: 100%;
+margin: 0;
+font-family: Arial, sans-serif;
+}
+
+body {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+height: 100%;
+margin: 0;
+padding: 0;
+overflow: hidden;
+}
+
+.hidden {
+display: none !important;
+}
+
+#start-screen {
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+align-items: center;
+text-align: center;
+height: 100%;
+width: 100%;
+background-image: url('OR-banner.png');
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+padding: 50px 0;
+box-sizing: border-box;
+}
+
+/* -------------------------------------- */
+/* ESTILOS DA TELA DE INÍCIO */
+/* -------------------------------------- */
+
+.main-logo {
+width: clamp(100px, 15vw, 200px);
+transition: transform 0.3s ease;
+}
+
+.main-logo:hover {
+transform: scale(1.05);
+}
+
+.or-text {
+font-size: clamp(24px, 5vw, 48px);
+font-weight: bold;
+color: #333;
+margin-top: 1rem;
+}
+
+#nickname-block {
+background-color: rgba(255, 255, 255, 0.9);
+border-radius: 12px;
+padding: 2rem;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 1rem;
+margin: auto;
+width: clamp(250px, 50vw, 400px);
+}
+
+#nickname-input {
+width: 80%;
+padding: 0.8rem;
+font-size: 1rem;
+border: 2px solid #ccc;
+border-radius: 6px;
+text-align: center;
+}
+
+#confirm-nickname-button {
+padding: 0.8rem 1.5rem;
+font-size: 1rem;
+color: white;
+background-color: #5EBBE5;
+border: 2px solid black;
+border-radius: 6px;
+cursor: pointer;
+transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#confirm-nickname-button:hover {
+background-color: #CD2E29;
+transform: scale(1.05);
+}
+
+#play-button {
+padding: 1rem 2rem;
+font-size: 1.5rem;
+color: white;
+background-color: #D34847;
+border: 2px solid white;
+border-radius: 8px;
+cursor: pointer;
+transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#play-button:hover {
+background-color: #D34847;
+border-color: #f0f0f0;
+transform: scale(1.05);
+}
+
+/* -------------------------------------- */
+/* ESTILOS DA TELA DO JOGO */
+/* -------------------------------------- */
+
+#game-screen {
+position: relative;
+display: flex;
+flex-direction: column;
+height: 100%;
+width: 100%;
+}
+
+/* ESTILOS DO BOTÃO DE PAUSE */
+#pause-button {
+position: absolute;
+top: 1rem;
+right: 1rem;
+background-color: rgba(255, 255, 255, 0.7);
+color: #333;
+border: none;
+border-radius: 8px;
+padding: 0.5rem 1rem;
+font-size: 1.5rem;
+cursor: pointer;
+z-index: 10;
+}
+
+/* -------------------------------------- */
+/* ESTILOS DA TELA DE PAUSE */
+/* -------------------------------------- */
+#pause-screen {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.7);
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 20;
+}
+
+.pause-content {
+background-color: white;
+padding: 3rem;
+border-radius: 12px;
+text-align: center;
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.pause-content h2 {
+font-size: 2rem;
+margin-bottom: 2rem;
+color: #333;
+}
+
+.pause-content button {
+display: block;
+width: 100%;
+padding: 1rem;
+margin-bottom: 1rem;
+font-size: 1.2rem;
+color: white;
+background-color: #2b7cff;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.pause-content button:hover {
+background-color: #0056b3;
+transform: scale(1.03);
+}
+
+/* Estilo para o botão de sair */
+#quit-button {
+background-color: #ff4d4d;
+}
+
+#quit-button:hover {
+background-color: #e53939;
+}
+
+.title {
+position: relative;
+z-index: 2;
+text-align: center;
+margin: 0.5rem 0;
+color: black;
+font-size: clamp(16px, 2.2vw, 24px);
+}
+
+.container {
+flex: 1;
+display: flex;
+flex-direction: row;
+position: relative;
+z-index: 1;
+overflow: hidden;
+}
+
+p {
+font-size: 40px;
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+color: whitesmoke;
+}
+
+.blue, .red {
+flex: 1;
+display: flex;
+justify-content: center;
+align-items: center;
+text-align: center;
+padding: 2rem;
+box-sizing: border-box;
+color: white;
+font-size: clamp(14px, 2vw, 22px);
+line-height: 1.2;
+}
+
+.blue {
+background: #2b7cff;
+border-top-left-radius: 16px;
+border-bottom-left-radius: 16px;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+transition: transform 0.3s ease;
+}
+
+.red {
+background: #ff4d4d;
+border-top-right-radius: 16px;
+border-bottom-right-radius: 16px;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+transition: transform 0.3s ease;
+}
+
+.blue:hover, .red:hover {
+transform: scale(1.05);
+}

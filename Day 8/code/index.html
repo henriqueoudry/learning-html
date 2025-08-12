@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digityx</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/code/img/digityx-logo.png" type="image/png">
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-left">
+            <img src="/code/img/digityx-logo.png" alt="Digityx Logo" class="navbar-logo">
+            <nav>
+                <a href="#" class="nav-button">Início</a>
+                <a href="#" class="nav-button">Sobre</a>
+                <a href="#" class="nav-button">Contato</a>
+            </nav>
+        </div>
+        
+            <h1 class="navbar-title">Digityx</h1>
+        <div class="navbar-right">
+            <a href="#" class="nav-button">Entrar</a>
+            <a href="#" class="nav-button">Cadastrar</a>
+            <span id="nickname-display"></span>
+            <div id="profile-pic-display" class="profile-pic-navbar"></div>
+        </div>
+    </header>
+
+    <main class="content">
+        <div class="game-block">
+            <h3>Digite seu Nickname</h3>
+            <input type="text" id="nickname-input" placeholder="Seu Nickname">
+            <button id="confirm-button">Confirmar</button>
+        </div>
+
+        <div class="profile-block">
+            <h3 id="profile-title">Escolha uma categoria</h3>
+            <div class="profile-options">
+                </div>
+            <button id="save-profile-button" style="display: none;">Salvar Foto</button>
+            <span id="back-button" style="display: none;">Voltar</span>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

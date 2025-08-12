@@ -1,0 +1,243 @@
+/* Estilos gerais do corpo da página */
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #FFEB3B;
+}
+
+/* Estilo da barra de navegação (header) */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000000;
+    padding: 10px 20px;
+    color: #ffffff;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Estilos para os elementos do lado esquerdo da barra de navegação */
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo {
+    height: 40px;
+    margin-right: 20px;
+    transition: transform 0.3s ease;
+}
+
+.navbar-logo:hover {
+    transform: scale(1.1);
+}
+
+/* Estilo do título principal no meio da barra de navegação */
+.navbar-title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Estilos para os botões e links de navegação */
+.nav-button {
+    background-color: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+
+.nav-button:hover {
+    color: #cc135a;
+    transform: scale(1.1);
+}
+
+/* Estilos para os elementos do lado direito da barra de navegação */
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+/* --- ANIMAÇÕES --- */
+
+.cursor {
+    display: inline-block;
+    border-right: 2px solid white;
+    animation: blink-cursor 0.7s step-end infinite;
+}
+
+@keyframes blink-cursor {
+    from, to { border-right-color: transparent; }
+    50% { border-right-color: white; }
+}
+
+/* --- BLOCOS DA PÁGINA PRINCIPAL --- */
+
+/* Estilo da área principal de conteúdo, agora com espaço entre os itens */
+.content {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 20px;
+    height: calc(100vh - 60px);
+}
+
+/* Estilo do novo bloco de jogo */
+.game-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+}
+
+.game-block h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* Estilo do input */
+.game-block input {
+    padding: 10px;
+    width: 100%;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    background-color: #333333;
+    color: white;
+    outline: none;
+    transition: border 0.3s ease;
+}
+
+.game-block input:focus {
+    border: 2px solid #FFFFFF;
+    box-shadow: 0 0 5px #FFFFFF;
+}
+
+/* Estilo do botão de confirmar */
+.game-block button {
+    padding: 12px 20px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    background-color: #900C3F;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.game-block button:hover {
+    background-color: #720932;
+    transform: scale(1.05);
+}
+
+/* --- NOVO BLOCO DE PERFIL --- */
+.profile-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    position: relative; /* Necessário para posicionar o botão Voltar */
+}
+
+.profile-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.profile-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.profile-pic:hover {
+    transform: scale(1.1);
+}
+
+.profile-pic.selected {
+    border-color: #FFEB3B; /* Borda amarela para a foto selecionada */
+}
+
+#save-profile-button {
+    padding: 12px 20px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    background-color: #900C3F;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#save-profile-button:hover {
+    background-color: #720932;
+    transform: scale(1.05);
+}
+
+#back-button {
+    color: #ffffff;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 14px;
+    margin-top: 10px;
+    align-self: flex-start; /* Alinha o botão à esquerda */
+    transition: color 0.3s ease;
+}
+
+#back-button:hover {
+    color: #FFEB3B;
+}
+
+.profile-pic-navbar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Deixa a imagem redonda */
+    background-color: #333333; /* Cor de fundo padrão */
+    border: 2px solid transparent; /* Borda para destaque */
+    margin-left: 20px;
+    transition: all 0.3s ease;
+    overflow: hidden; /* Garante que a imagem não saia do círculo */
+}
+
+.profile-pic-navbar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
+}
+
+#nickname-display {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 15px; /* Espaço entre o nickname e a foto de perfil */
+    display: none; /* Inicia invisível */
+}
